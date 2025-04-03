@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\MealController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,7 +19,8 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     // Recipe Finder route
     Route::get('/recipes', [RecipeController::class, 'search'])->name('recipes.search');
-
+    Route::get('/meals/filter', [MealController::class, 'filter'])->name('meals.filter');
+    
     // Favorite routes
     Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
     Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
