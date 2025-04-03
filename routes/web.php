@@ -9,27 +9,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Redirect to Recipe Finder after login
 Route::get('/dashboard', function () {
-    return redirect()->route('recipes.search'); // Redirect to the recipe page
+    return redirect()->route('recipes.search');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
-// routes for the RecipeController
-Route::get('/recipes', [RecipeController::class, 'search'])->name('recipes.search');
-
-
-
+// Protect Recipe Finder and other routes with auth middleware
 Route::middleware('auth')->group(function () {
-    // favorite routes
+    // Recipe Finder route
+    Route::get('/recipes', [RecipeController::class, 'search'])->name('recipes.search');
+
+    // Favorite routes
     Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
     Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
     Route::delete('/favorites/{favorite}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
+    Route::patch('/favorites/{favorite}', [FavoriteController::class, 'update'])->name('favorites.update');
 
-
-    //profile routes
+    // Profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Include authentication routes
 require __DIR__.'/auth.php';

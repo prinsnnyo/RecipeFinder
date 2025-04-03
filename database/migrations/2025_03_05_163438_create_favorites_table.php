@@ -1,31 +1,27 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateFavoritesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-  
     public function up()
-{
-    Schema::create('favorites', function (Blueprint $table) {
-        $table->id();
-        $table->foreignId('user_id')->constrained()->onDelete('cascade');
-        $table->string('recipe_name');
-        $table->string('recipe_image');
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('favorites', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('recipe_id'); // Keep this if you still want to track recipe IDs
+            $table->string('recipe_name'); // Add recipe name
+            $table->string('recipe_image')->nullable(); // Add recipe image (nullable)
+            $table->timestamps();
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // Removed the foreign key constraint on `recipe_id`
+        });
+    }
+
+    public function down()
     {
         Schema::dropIfExists('favorites');
     }
-};
+}
