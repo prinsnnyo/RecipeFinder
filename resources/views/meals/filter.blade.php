@@ -34,9 +34,9 @@
     </form>
 
     {{-- Display Meals --}}
-    @if (!empty($meals))
+    @if (!empty($detailedMeals))
         <div class="row g-4">
-            @foreach ($meals as $meal)
+            @foreach ($detailedMeals as $meal)
                 <div class="col-md-4 col-sm-6">
                     <div class="shadow-sm card h-100">
                         <img src="{{ $meal['strMealThumb'] }}" class="card-img-top" alt="{{ $meal['strMeal'] }}">
@@ -45,7 +45,13 @@
                             <h5 class="text-black card-title">{{ $meal['strMeal'] }}</h5>
 
                             {{-- View Recipe Button --}}
-                            <a href="#" class="mb-2 text-white btn btn-info">View Recipe</a>
+                            @if (!empty($meal['strSource']))
+                                <a href="{{ $meal['strSource'] }}" class="mb-2 text-white btn btn-info" target="_blank">View Recipe</a>
+                            @elseif (!empty($meal['strYoutube']))
+                                <a href="{{ $meal['strYoutube'] }}" class="mb-2 text-white btn btn-info" target="_blank">Watch Recipe Video</a>
+                            @else
+                                <p class="text-danger">Recipe source not available.</p>
+                            @endif
 
                             {{-- Add to Favorites Button --}}
                             @auth
