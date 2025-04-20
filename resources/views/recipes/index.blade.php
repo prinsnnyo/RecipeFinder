@@ -15,7 +15,6 @@
     {{-- Meal Filter Form --}}
     <form action="{{ route('meals.filter') }}" method="GET" class="mb-4">
         <div class="input-group">
-            <!-- <input type="text" name="search" class="form-control" placeholder="Filter meals..." value="{{ request('search') }}"> -->
             <button type="submit" class="text-white btn btn-primary">Filter</button>
         </div>
     </form>
@@ -23,13 +22,13 @@
     {{-- Display Recipes --}}
     @if(isset($recipes) && count($recipes) > 0)
         <h3 class="text-center text-white">Recipe Results</h3>
-        <div class="row g-4">
+        <div class="row g-4"> {{-- Bootstrap row with gutter spacing --}}
             @foreach($recipes as $recipe)
-                <div class="col-md-4 col-sm-6">
-                    <div class="shadow-sm card h-100">
+                <div class="col-lg-4 col-md-6 col-sm-12"> {{-- Responsive grid columns --}}
+                    <div class="shadow-sm card h-100"> {{-- Bootstrap card --}}
                         <img src="{{ $recipe['strMealThumb'] }}" class="card-img-top" alt="{{ $recipe['strMeal'] }}">
                         <div class="text-center card-body">
-                            <h5 class="text-white card-title">{{ $recipe['strMeal'] }}</h5>
+                            <h5 class="text-black card-title">{{ $recipe['strMeal'] }}</h5> {{-- Meal Name --}}
                             <a href="{{ $recipe['strSource'] }}" class="mb-2 text-white btn btn-info" target="_blank">View Recipe</a>
 
                             @auth
@@ -52,26 +51,6 @@
         </div>
     @else
         <p class="mt-4 text-center text-white">No recipes found. Try searching again.</p>
-    @endif
-
-    {{-- Display Meals --}}
-    @if (!empty($meals))
-        <h3 class="mt-5 text-center text-white">Filtered Meals</h3>
-        <div class="row g-4">
-            @foreach ($meals as $meal)
-                <div class="col-md-4 col-sm-6">
-                    <div class="shadow-sm card h-100">
-                        <img src="{{ $meal['strMealThumb'] }}" class="card-img-top" alt="{{ $meal['strMeal'] }}">
-                        <div class="text-center card-body">
-                            <h5 class="text-white card-title">{{ $meal['strMeal'] }}</h5>
-                            <a href="{{ $meal['strSource'] }}" class="text-white btn btn-info" target="_blank">View Recipe</a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    @else
-        <p class="mt-4 text-center text-white">No meals found. Try filtering again.</p>
     @endif
 </div>
 @endsection
