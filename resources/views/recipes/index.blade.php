@@ -139,39 +139,71 @@
 
 
     
-    {{-- Display Recipes --}}
-    @if(isset($recipes) && count($recipes) > 0)
-        <h3 class="text-center text-white">Recipe Results</h3>
-        <div class="row g-4">
-            @foreach($recipes as $recipe)
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="shadow-sm card h-100">
-                        <img src="{{ $recipe['strMealThumb'] }}" class="card-img-top" alt="{{ $recipe['strMeal'] }}">
-                        <div class="text-center card-body">
-                            <h5 class="text-black card-title">{{ $recipe['strMeal'] }}</h5>
-                            <a href="{{ $recipe['strSource'] }}" class="mb-2 text-white btn btn-info" target="_blank">View Recipe</a>
-
-                            @auth
-                                <form action="{{ route('favorites.store') }}" method="POST" class="mt-2">
-                                    @csrf
-                                    <input type="hidden" name="recipe_id" value="{{ $recipe['idMeal'] }}">
-                                    <input type="hidden" name="recipe_name" value="{{ $recipe['strMeal'] }}">
-                                    <input type="hidden" name="recipe_image" value="{{ $recipe['strMealThumb'] }}">
-                                    <button type="submit" class="text-white btn btn-warning">Save to Favorites</button>
-                                </form>
+          {{-- Display Recipes --}}
+      @if(isset($recipes) && count($recipes) > 0)
+          <h3 class="text-center mb-4" style="color: #653450;">Recipe Results</h3>
+          <div class="row g-4">
+              @foreach($recipes as $recipe)
+                  <div class="col-lg-4 col-md-6 col-sm-12">
+                      <div class="card shadow-sm h-100" style="border-radius: 10px; border: 1px solid  #653450;">
+                          <img src="{{ $recipe['strMealThumb'] }}" 
+                              class="card-img-top" 
+                              alt="{{ $recipe['strMeal'] }}"
+                              style="height: 220px; object-fit: cover; border-radius: 10px 10px 0 0;">
+                          
+                          <div class="card-body text-center" style="padding: 1.25rem;">
+                              <h5 class="card-title mb-3" style="color: #653450; font-weight: 600;">
+                                  {{ $recipe['strMeal'] }}
+                              </h5>
+                              
+                              @auth
+                                <div class="d-flex justify-content-between mt-3">
+                                    <a href="{{ $recipe['strSource'] }}" 
+                                      class="btn" 
+                                      style="width: 48%; background-color: #653450; color: white; border: none;"
+                                      target="_blank">
+                                        View Recipe
+                                    </a>
+                                    
+                                    <form action="{{ route('favorites.store') }}" method="POST" style="width: 48%;">
+                                        @csrf
+                                        <input type="hidden" name="recipe_id" value="{{ $recipe['idMeal'] }}">
+                                        <input type="hidden" name="recipe_name" value="{{ $recipe['strMeal'] }}">
+                                        <input type="hidden" name="recipe_image" value="{{ $recipe['strMealThumb'] }}">
+                                        <button type="submit" 
+                                                class="btn w-100" 
+                                                style="background-color: #f1b43c; color: white; border: none;">
+                                            <i class="fas fa-heart me-1"></i> Save
+                                        </button>
+                                    </form>
+                                </div>
                             @else
-                                <p class="mt-2 text-danger">
-                                    Please <a href="{{ route('login') }}">log in</a> to save recipes to your favorites.
-                                </p>
+                                <div class="d-flex justify-content-between mt-3">
+                                    <a href="{{ $recipe['strSource'] }}" 
+                                      class="btn" 
+                                      style="width: 48%; background-color: #653450; color: white; border: none;"
+                                      target="_blank">
+                                        View Recipe
+                                    </a>
+                                    
+                                    <a href="{{ route('login') }}" 
+                                      class="btn" 
+                                      style="width: 48%; background-color: #f1b43c; color: white; border: none;">
+                                        <i class="fas fa-lock me-1"></i> Login to Save
+                                    </a>
+                                </div>
                             @endauth
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    @else
-        <p class="mt-4 text-center text-dark"><i class="fas fa-frown text-[#AA5486] me-2"></i>No recipes found. Try searching again.</p>
-    @endif
+                          </div>
+                      </div>
+                  </div>
+              @endforeach
+          </div>
+      @else
+          <p class="mt-4 text-center" style="color: #653450;">
+              <i class="fas fa-frown me-2" style="color: #AA5486;"></i>
+              No recipes found. Try searching again.
+          </p>
+      @endif
 </div>
 
 <style>
