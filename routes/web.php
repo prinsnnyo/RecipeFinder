@@ -15,9 +15,9 @@ Route::get('/dashboard', function () {
     return redirect()->route('recipes.search');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Protect Recipe Finder and other routes with auth middleware
+// Protected routes
 Route::middleware('auth')->group(function () {
-    // Recipe Finder route
+    // Recipe routes
     Route::get('/recipes', [RecipeController::class, 'search'])->name('recipes.search');
     Route::get('/meals/filter', [MealController::class, 'filter'])->name('meals.filter');
     
@@ -27,11 +27,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/favorites/{favorite}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
     Route::patch('/favorites/{favorite}', [FavoriteController::class, 'update'])->name('favorites.update');
 
-    // Profile routes
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Consolidated Profile routes
+    Route::prefix('profile')->group(function () {
+        Route::get('/', [ProfileController::class, 'show'])->name('profile.show');
+        Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/update', [ProfileController::class, 'update'])->name('profile.update');
+        Route::post('/image', [ProfileController::class, 'updateImage'])->name('profile.image');
+        Route::delete('/image', [ProfileController::class, 'deleteImage'])->name('profile.image.delete');
+        Route::delete('/', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    });
 });
 
-// Include authentication routes
 require __DIR__.'/auth.php';

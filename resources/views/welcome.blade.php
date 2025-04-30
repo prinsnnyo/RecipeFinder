@@ -22,8 +22,8 @@
     <body class="bg-[#f4f4f4] dark:bg-[#fff] text-[#1b1b18] min-h-screen flex flex-col">
     <header class="bg-white shadow-sm dark:bg-[#653450]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
-            <h1 class="text-2xl font-serif text-[#fff] dark:text-white">
-                RecipeFinder<span class="text-[#fff]">.</span>
+            <h1 class="text-2xl font-serif text-[#000000] dark:text-white">
+                RecipeFinder<span class="text-[#000000]">.</span>
             </h1>
 
             <a>
@@ -36,7 +36,7 @@
                         </a>
                     @else
                         <a href="{{ route('login') }}"
-                           class="px-5 font-serif py-2 border rounded border-transparent text-sm hover:bg-[#AA5486] text-white dark:text-white hover:text-[#fff]">
+                           class="px-5 font-serif py-2 border rounded border-transparent text-sm hover:bg-[#AA5486] text-black dark:text-white hover:text-[#fff]">
                             Log in
                         </a>
 
