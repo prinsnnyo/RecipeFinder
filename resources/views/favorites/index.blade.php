@@ -21,31 +21,46 @@
     @endif
 
     @if (isset($favorites) && $favorites->isNotEmpty())
-        <div class="row g-4">
-            @foreach ($favorites as $favorite)
-                <div class="col-lg-4 col-md-6">
-                    <div class="card h-100 rounded-4 shadow-lg border-0 meal-card">
-                        <img src="{{ $favorite->recipe_image }}" class="card-img-top" alt="{{ $favorite->recipe_name }}" style="object-fit: cover; height: 230px;">
-                        <div class="card-body text-center">
-                            <h5 class="card-title fw-bold text-dark" style="font-size: 1.2rem;">{{ $favorite->recipe_name }}</h5>
-                            <form action="{{ route('favorites.destroy', $favorite->id) }}" method="POST" class="mt-2">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger rounded-pill text-white fw-bold px-4">
-                                    <i class="fas fa-heart-broken me-1"></i> Remove from Favorites
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
+    <div class="row g-4">
+    @foreach ($favorites as $favorite)
+    <div class="col-lg-4 col-md-6">
+    <div class="border-0 shadow-lg card h-100 rounded-4 meal-card">
+        <img src="{{ $favorite->recipe_image }}" class="card-img-top" alt="{{ $favorite->recipe_name }}" style="object-fit: cover; height: 230px;">
+        <div class="text-center card-body">
+            <h5 class="card-title fw-bold text-dark" style="font-size: 1.2rem;">{{ $favorite->recipe_name }}</h5>
+
+            {{-- View Recipe Button --}}
+            @if (!empty($favorite->recipe_source))
+                <a href="{{ $favorite->recipe_source }}" target="_blank" class="px-4 mb-2 btn btn-info rounded-pill">
+                    <i class="fas fa-book-open me-1"></i> View Recipe
+                </a>
+            @elseif (!empty($favorite->recipe_video))
+                <a href="{{ $favorite->recipe_video }}" target="_blank" class="px-4 mb-2 btn btn-info rounded-pill">
+                    <i class="fas fa-play me-1"></i> Watch Video
+                </a>
+            @else
+                <p class="text-danger">Recipe source not available.</p>
+            @endif
+
+            {{-- Remove from Favorites Button --}}
+            <form action="{{ route('favorites.destroy', $favorite->id) }}" method="POST" class="mt-2">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="px-4 btn btn-danger rounded-pill">
+                    <i class="fas fa-heart-broken me-1"></i> Remove from Favorites
+                </button>
+            </form>
         </div>
-    @else
-        <p class="text-center text-dark">
-            <i class="fas fa-frown me-2" style="color: #AA5486;"></i>
-            You have no favorite recipes yet.
-        </p>
-    @endif
+    </div>
+</div>
+@endforeach
+    </div>
+@else
+    <p class="text-center text-dark">
+        <i class="fas fa-frown me-2" style="color: #AA5486;"></i>
+        You have no favorite recipes yet.
+    </p>
+@endif
 </div>
 
 <style>
