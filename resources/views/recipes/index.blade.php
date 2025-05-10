@@ -141,7 +141,9 @@
     
           {{-- Display Recipes --}}
       @if(isset($recipes) && count($recipes) > 0)
-          <h3 class="text-center mb-4" style="color: #653450;">Recipe Results</h3>
+                <h1 class="bordered-heading" style="color: #653450;">
+              <span>Recipe Results</span>
+          </h1>
           <div class="row g-4">
               @foreach($recipes as $recipe)
                   <div class="col-lg-4 col-md-6 col-sm-12">
@@ -162,7 +164,7 @@
                                       class="btn" 
                                       style="width: 48%; background-color: #653450; color: white; border: none;"
                                       target="_blank">
-                                        View Recipe
+                                      <i class="fas fa-book-open me-1"></i> View Recipe
                                     </a>
                                     
                                     <form action="{{ route('favorites.store') }}" method="POST" style="width: 48%;">
@@ -240,6 +242,26 @@
       100% {
         transform: translateX(-50%);
       }
+    }
+    .bordered-heading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #333;
+        margin: 40px 0;
+    }
+
+    .bordered-heading::before,
+    .bordered-heading::after {
+        content: "";
+        flex: 1;
+        height: 3px;
+        background-color: #AA5486;
+        margin: 0 15px;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
     }
   </style>
 

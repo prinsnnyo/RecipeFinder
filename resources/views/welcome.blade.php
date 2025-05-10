@@ -23,16 +23,16 @@
     <header class="bg-white shadow-sm dark:bg-[#653450]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
             <h1 class="text-2xl font-serif text-[#000000] dark:text-white">
-                RecipeFinder<span class="text-[#000000]">.</span>
+                RecipeFinder<span class="text-[#fff]">.</span>
             </h1>
 
             <a>
             @if (Route::has('login'))
                 <div class="flex items-center space-x-4">
                     @auth
-                        <a href="{{ url('/dashboard') }}"
-                           class="px-5 py-2 bg-transparent border rounded border-gray-300 text-sm dark:text-white hover:border-red-500">
-                            Dashboard
+                        <a href="{{ url('/login') }}"
+                           class="px-5 py-2 bg-transparent border rounded border-gray-300 text-sm hover:bg-[#AA5486] text-black dark:text-white hover:text-[#fff]">
+                            Login
                         </a>
                     @else
                         <a href="{{ route('login') }}"
