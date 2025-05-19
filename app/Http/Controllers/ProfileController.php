@@ -52,18 +52,20 @@ class ProfileController extends Controller
     /**
      * Update the user's profile image
      */
-    public function updateImage(Request $request): RedirectResponse
+        public function updateImage(Request $request): RedirectResponse
     {
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $user = $request->user();
+        
+        // Store the image
         $path = $request->file('image')->store('profile-images', 'public');
         
         // Delete old image if exists
         if ($user->profile_image) {
-            Storage::delete('public/' . $user->profile_image);
+            Storage::disk('public')->delete($user->profile_image);
         }
 
         $user->profile_image = $path;
