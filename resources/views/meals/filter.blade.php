@@ -68,7 +68,7 @@
                                     <input type="hidden" name="recipe_name" value="{{ $meal['strMeal'] }}">
                                     <input type="hidden" name="recipe_image" value="{{ $meal['strMealThumb'] }}">
                                     <button type="submit" class="btn btn-warning rounded-pill text-white fw-bold px-4">
-                                    <i class="fas fa-heart me-1"></i> Add to Favorites
+                                    <i class="fas fa-heart me-1"></i> Favorite
                                     </button>
                                 </form>
                             @else

@@ -30,9 +30,9 @@
             @if (Route::has('login'))
                 <div class="flex items-center space-x-4">
                     @auth
-                        <a href="{{ url('/dashboard') }}"
+                        <a href="{{ url('/login') }}"
                            class="px-5 py-2 bg-transparent border rounded border-gray-300 text-sm dark:text-white hover:border-red-500">
-                            Dashboard
+                           Login
                         </a>
                     @else
                         <a href="{{ route('login') }}"

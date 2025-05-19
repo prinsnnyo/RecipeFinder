@@ -142,6 +142,7 @@
           {{-- Display Recipes --}}
       @if(isset($recipes) && count($recipes) > 0)
           <h3 class="text-center mb-4" style="color: #653450;">Recipe Results</h3>
+          
           <div class="row g-4">
               @foreach($recipes as $recipe)
                   <div class="col-lg-4 col-md-6 col-sm-12">
@@ -173,7 +174,7 @@
                                         <button type="submit" 
                                                 class="btn w-100" 
                                                 style="background-color: #f1b43c; color: white; border: none;">
-                                            <i class="fas fa-heart me-1"></i> Save
+                                            <i class="fas fa-heart me-1"></i> Favorite
                                         </button>
                                     </form>
                                 </div>

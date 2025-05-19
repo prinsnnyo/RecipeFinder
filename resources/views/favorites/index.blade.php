@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container min-h-[60vh]">
-    <h1 class="bordered-heading">
+    <h1 class="bordered-heading" style="color: #653450;">
         <span>My Favorites</span>
     </h1>
 
