@@ -44,13 +44,6 @@
             background-color: #4b2738;
         }
         .upload-section {
-<<<<<<< HEAD
-            background: rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-top: 1.5rem;
-        }
-=======
     background: rgba(255,255,255,0.05);
     padding: 2rem;
     border-radius: 15px;
@@ -84,7 +77,6 @@
     }
 }
 
->>>>>>> itom
         .wide-card {
             max-width: 900px;
             margin: 0 auto;
@@ -111,20 +103,6 @@
         <h1 class="profile-title">{{ auth()->user()->name }}</h1>
         <p class="profile-email">{{ auth()->user()->email }}</p>
 
-<<<<<<< HEAD
-         <div class="upload-section">
-            <h4 class="text-white mb-3">Update Profile Picture</h4>
-            <form method="POST" action="{{ route('profile.image') }}" enctype="multipart/form-data" class="d-flex justify-content-center">
-                @csrf
-                <div class="w-75">
-                    <input type="file" class="form-control" name="image" accept="image/*" required>
-                </div>
-                <button type="submit" class="btn btn-edit ms-3">
-                    Upload
-                </button>
-            </form>
-        </div>
-=======
       <div class="upload-section">
     <h6 class="text-white mb-4 text-center">Update Profile Picture</h6>
     <form method="POST" action="{{ route('profile.image') }}" enctype="multipart/form-data">
@@ -147,7 +125,6 @@
     </form>
 </div>
 
->>>>>>> itom
     </div>
 
     <!-- Profile Information Section -->

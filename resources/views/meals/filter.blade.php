@@ -81,24 +81,6 @@
                             <p class="mb-2" style="color: #653450;">Recipe source not available.</p>
                         @endif
 
-<<<<<<< HEAD
-                            @auth
-                                <form action="{{ route('favorites.store') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="recipe_id" value="{{ $meal['idMeal'] }}">
-                                    <input type="hidden" name="recipe_name" value="{{ $meal['strMeal'] }}">
-                                    <input type="hidden" name="recipe_image" value="{{ $meal['strMealThumb'] }}">
-                                    <button type="submit" class="btn btn-warning rounded-pill text-white fw-bold px-4">
-                                    <i class="fas fa-heart me-1"></i> Favorite
-                                    </button>
-                                </form>
-                            @else
-                                <p class="mt-2 text-danger">
-                                    Please <a href="{{ route('login') }}" class="fw-bold text-info">log in</a> to save recipes.
-                                </p>
-                            @endauth
-                        </div>
-=======
                         @auth
                             <form action="{{ route('favorites.store') }}" method="POST" class="mb-2 flex-fill" style="min-width: 150px;">
                                 @csrf
@@ -111,7 +93,6 @@
                                 </button>
                             </form>
                         @endauth
->>>>>>> itom
                     </div>
 
                 </div>
