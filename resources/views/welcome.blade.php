@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>RecipeFinder</title>
-        <link rel="icon" type="image/png" href="{{ asset('RF-logo.png') }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -30,19 +29,19 @@
             @if (Route::has('login'))
                 <div class="flex flex-wrap gap-3 items-center mt-3 sm:mt-0">
                     @auth
-                        <a href="{{ url('/dashboard') }}"
-                           class="px-5 py-2 bg-transparent border rounded border-gray-300 text-sm dark:text-white hover:border-red-500">
-                            Dashboard
+                       <a href="{{ url('/login') }}"
+                           class="px-5 py-2 bg-transparent border rounded border-gray-300 text-sm hover:bg-[#AA5486] text-black dark:text-white hover:text-[#fff]">
+                            Login
                         </a>
                     @else
                         <a href="{{ route('login') }}"
-                           class="px-4 py-2 font-serif border rounded text-sm border-transparent hover:bg-[#AA5486] text-black dark:text-white hover:text-[#fff]">
+                           class="px-5 font-serif py-2 border rounded border-transparent text-sm hover:bg-[#AA5486] text-black dark:text-white hover:text-[#fff]">
                             Log in
                         </a>
 
-                        @if (Route::has('register'))
+                           @if (Route::has('register'))
                             <a href="{{ route('register') }}"
-                               class="px-4 py-2 font-serif bg-[#AA5486] text-white rounded text-sm hover:border-[#653450] hover:bg-[#653450]">
+                               class="px-5 font-serif py-2 bg-[#AA5486] rounded text-sm text-black dark:text-black bg-[#fff] hover:border-[#653450] hover:text-[#fff] hover:bg-[#AA5486]">
                                 Register
                             </a>
                         @endif
