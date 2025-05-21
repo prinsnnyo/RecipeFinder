@@ -15,6 +15,11 @@
       height: auto;
       border-radius: 10px;
     }
+    .recipe-card {
+        margin-bottom: 20px; 
+        text-align: center;  
+      }
+
     .recipe-title {
       background-color: #f1b43c;
       color: white;
@@ -45,24 +50,25 @@
     </div>
 
     <!-- Featured Recipes -->
-    <div class="row text-center mb-5">
-      <div class="col-md-3 recipe-card">
-        <img src="https://pinchofyum.com/cdn-cgi/image/width=360,height=514,fit=crop/wp-content/uploads/Pepperoncini-Chicken-6.jpg" alt="Dinner">
-        <div class="recipe-title">DINNER</div>
-      </div>
-      <div class="col-md-3 recipe-card">
-        <img src="https://pinchofyum.com/cdn-cgi/image/width=360,height=514,fit=crop/wp-content/uploads/Carrot-Cake-Coffee-Cake-1.jpg" alt="Most Popular">
-        <div class="recipe-title">MOST POPULAR</div>
-      </div>
-      <div class="col-md-3 recipe-card">
-        <img src="https://pinchofyum.com/cdn-cgi/image/width=360,height=514,fit=crop/wp-content/uploads/Mojo-Bowls-1.jpg" alt="Quick and Easy">
-        <div class="recipe-title">QUICK AND EASY</div>
-      </div>
-      <div class="col-md-3 recipe-card">
-        <img src="https://pinchofyum.com/cdn-cgi/image/width=360,height=514,fit=crop/wp-content/uploads/Crispy-Chicken-Cutlets-on-Plate.jpg" alt="Air Fryer">
-        <div class="recipe-title">AIR FRYER</div>
-      </div>
-    </div>
+   <!-- Featured Recipes -->
+<div class="row text-center mb-5 px-3">
+  <div class="col-12 col-sm-6 col-md-3 recipe-card">
+    <img src="https://pinchofyum.com/cdn-cgi/image/width=360,height=514,fit=crop/wp-content/uploads/Pepperoncini-Chicken-6.jpg" alt="Dinner">
+    <div class="recipe-title">DINNER</div>
+  </div>
+  <div class="col-12 col-sm-6 col-md-3 recipe-card">
+    <img src="https://pinchofyum.com/cdn-cgi/image/width=360,height=514,fit=crop/wp-content/uploads/Carrot-Cake-Coffee-Cake-1.jpg" alt="Most Popular">
+    <div class="recipe-title">MOST POPULAR</div>
+  </div>
+  <div class="col-12 col-sm-6 col-md-3 recipe-card">
+    <img src="https://pinchofyum.com/cdn-cgi/image/width=360,height=514,fit=crop/wp-content/uploads/Mojo-Bowls-1.jpg" alt="Quick and Easy">
+    <div class="recipe-title">QUICK AND EASY</div>
+  </div>
+  <div class="col-12 col-sm-6 col-md-3 recipe-card">
+    <img src="https://pinchofyum.com/cdn-cgi/image/width=360,height=514,fit=crop/wp-content/uploads/Crispy-Chicken-Cutlets-on-Plate.jpg" alt="Air Fryer">
+    <div class="recipe-title">AIR FRYER</div>
+  </div>
+</div>
 
 <!-- Category Scroll Section -->
 <div class="category-scroll-container">
@@ -70,7 +76,7 @@
     <!-- Repeatable Items -->
     <div class="category-item">
       <img src="https://media.cnn.com/api/v1/images/stellar/prod/170206162409-indian-frybread.jpg?q=w_1110,c_fill" class="category-img mb-2" alt="American">
-      <div class="fw-bold">AMERICAN</div>
+      <div class="fw-bold text-center">AMERICAN</div>
     </div>
     <div class="category-item">
       <img src="https://fullsuitcase.com/wp-content/uploads/2021/01/Traditional-British-food.jpg" class="category-img mb-2" alt="British">
@@ -141,8 +147,9 @@
     
           {{-- Display Recipes --}}
       @if(isset($recipes) && count($recipes) > 0)
-          <h3 class="text-center mb-4" style="color: #653450;">Recipe Results</h3>
-          
+                <h1 class="bordered-heading" style="color: #653450;">
+              <span>Recipe Results</span>
+          </h1>
           <div class="row g-4">
               @foreach($recipes as $recipe)
                   <div class="col-lg-4 col-md-6 col-sm-12">
@@ -163,7 +170,7 @@
                                       class="btn" 
                                       style="width: 48%; background-color: #653450; color: white; border: none;"
                                       target="_blank">
-                                        View Recipe
+                                      <i class="fas fa-book-open me-1"></i> View Recipe
                                     </a>
                                     
                                     <form action="{{ route('favorites.store') }}" method="POST" style="width: 48%;">
@@ -242,6 +249,36 @@
         transform: translateX(-50%);
       }
     }
+    .bordered-heading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #333;
+        margin: 40px 0;
+    }
+
+    .bordered-heading::before,
+    .bordered-heading::after {
+        content: "";
+        flex: 1;
+        height: 3px;
+        background-color: #AA5486;
+        margin: 0 15px;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+    }
+    .category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fw-bold {
+  text-align: center;
+}
+
   </style>
 
 <!-- JavaScript to clone items for infinite scroll -->

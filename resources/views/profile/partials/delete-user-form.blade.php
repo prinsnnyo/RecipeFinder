@@ -1,10 +1,10 @@
 <section class="space-y-6">
     <header>
-        <h2 class="text-lg font-medium text-dark-900 dark:text-gray-100">
+        <h2 class="text-lg font-bold text-black-900 dark:text-black-100">
             {{ __('Delete Account') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+        <p class="mt-1 text-sm text-gray-600 dark:text-black-400">
             {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.') }}
         </p>
     </header>
@@ -19,11 +19,15 @@
             @csrf
             @method('delete')
 
+<<<<<<< HEAD
             <h2 class="text-lg font-medium text-dark-900 dark:text-dark-400">
+=======
+            <h2 class="text-lg font-medium text-black-900 dark:text-black-100">
+>>>>>>> itom
                 {{ __('Are you sure you want to delete your account?') }}
             </h2>
 
-            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+            <p class="mt-1 text-sm text-gray-600 dark:text-black-400">
                 {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
             </p>
 
@@ -34,7 +38,7 @@
                     id="password"
                     name="password"
                     type="password"
-                    class="mt-1 block w-3/4"
+                    class="mt-1 block w-full bg-white text-black"
                     placeholder="{{ __('Password') }}"
                 />
 
