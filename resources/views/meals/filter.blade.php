@@ -91,7 +91,7 @@
                                 <input type="hidden" name="recipe_image" value="{{ $meal['strMealThumb'] }}">
                                 <button type="submit" class="btn w-100"
                                     style="background-color: #f1b43c; color: white; border: none; border-radius: 6px;">
-                                    <i class="fas fa-heart me-1"></i> Save
+                                    <i class="fas fa-heart me-1"></i> Favorite
                                 </button>
                             </form>
                         @endauth

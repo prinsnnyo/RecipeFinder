@@ -15,6 +15,11 @@
       height: auto;
       border-radius: 10px;
     }
+    .recipe-card {
+        margin-bottom: 20px; 
+        text-align: center;  
+      }
+
     .recipe-title {
       background-color: #f1b43c;
       color: white;
@@ -45,24 +50,25 @@
     </div>
 
     <!-- Featured Recipes -->
-    <div class="row text-center mb-5">
-      <div class="col-md-3 recipe-card">
-        <img src="https://pinchofyum.com/cdn-cgi/image/width=360,height=514,fit=crop/wp-content/uploads/Pepperoncini-Chicken-6.jpg" alt="Dinner">
-        <div class="recipe-title">DINNER</div>
-      </div>
-      <div class="col-md-3 recipe-card">
-        <img src="https://pinchofyum.com/cdn-cgi/image/width=360,height=514,fit=crop/wp-content/uploads/Carrot-Cake-Coffee-Cake-1.jpg" alt="Most Popular">
-        <div class="recipe-title">MOST POPULAR</div>
-      </div>
-      <div class="col-md-3 recipe-card">
-        <img src="https://pinchofyum.com/cdn-cgi/image/width=360,height=514,fit=crop/wp-content/uploads/Mojo-Bowls-1.jpg" alt="Quick and Easy">
-        <div class="recipe-title">QUICK AND EASY</div>
-      </div>
-      <div class="col-md-3 recipe-card">
-        <img src="https://pinchofyum.com/cdn-cgi/image/width=360,height=514,fit=crop/wp-content/uploads/Crispy-Chicken-Cutlets-on-Plate.jpg" alt="Air Fryer">
-        <div class="recipe-title">AIR FRYER</div>
-      </div>
-    </div>
+   <!-- Featured Recipes -->
+<div class="row text-center mb-5 px-3">
+  <div class="col-12 col-sm-6 col-md-3 recipe-card">
+    <img src="https://pinchofyum.com/cdn-cgi/image/width=360,height=514,fit=crop/wp-content/uploads/Pepperoncini-Chicken-6.jpg" alt="Dinner">
+    <div class="recipe-title">DINNER</div>
+  </div>
+  <div class="col-12 col-sm-6 col-md-3 recipe-card">
+    <img src="https://pinchofyum.com/cdn-cgi/image/width=360,height=514,fit=crop/wp-content/uploads/Carrot-Cake-Coffee-Cake-1.jpg" alt="Most Popular">
+    <div class="recipe-title">MOST POPULAR</div>
+  </div>
+  <div class="col-12 col-sm-6 col-md-3 recipe-card">
+    <img src="https://pinchofyum.com/cdn-cgi/image/width=360,height=514,fit=crop/wp-content/uploads/Mojo-Bowls-1.jpg" alt="Quick and Easy">
+    <div class="recipe-title">QUICK AND EASY</div>
+  </div>
+  <div class="col-12 col-sm-6 col-md-3 recipe-card">
+    <img src="https://pinchofyum.com/cdn-cgi/image/width=360,height=514,fit=crop/wp-content/uploads/Crispy-Chicken-Cutlets-on-Plate.jpg" alt="Air Fryer">
+    <div class="recipe-title">AIR FRYER</div>
+  </div>
+</div>
 
 <!-- Category Scroll Section -->
 <div class="category-scroll-container">
@@ -70,7 +76,7 @@
     <!-- Repeatable Items -->
     <div class="category-item">
       <img src="https://media.cnn.com/api/v1/images/stellar/prod/170206162409-indian-frybread.jpg?q=w_1110,c_fill" class="category-img mb-2" alt="American">
-      <div class="fw-bold">AMERICAN</div>
+      <div class="fw-bold text-center">AMERICAN</div>
     </div>
     <div class="category-item">
       <img src="https://fullsuitcase.com/wp-content/uploads/2021/01/Traditional-British-food.jpg" class="category-img mb-2" alt="British">
@@ -175,7 +181,7 @@
                                         <button type="submit" 
                                                 class="btn w-100" 
                                                 style="background-color: #f1b43c; color: white; border: none;">
-                                            <i class="fas fa-heart me-1"></i> Save
+                                            <i class="fas fa-heart me-1"></i> Favorite
                                         </button>
                                     </form>
                                 </div>
@@ -263,6 +269,16 @@
         margin: 0 15px;
         box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
     }
+    .category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fw-bold {
+  text-align: center;
+}
+
   </style>
 
 <!-- JavaScript to clone items for infinite scroll -->
