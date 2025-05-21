@@ -81,39 +81,75 @@
     </div>
 
     <!-- Responsive Menu -->
-                    <div :class="{ 'block': open, 'hidden': !open }" class="md:hidden bg-[#653450] text-white px-4 py-4 space-y-2">
-                    <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" 
-        class="text-white hover:bg-white hover:text-[#653450] !important
-">
+                <!-- Sidebar Overlay -->
+<div x-show="open"
+     x-transition:enter="transition ease-out duration-300"
+     x-transition:enter-start="opacity-0"
+     x-transition:enter-end="opacity-100"
+     x-transition:leave="transition ease-in duration-200"
+     x-transition:leave-start="opacity-100"
+     x-transition:leave-end="opacity-0"
+     class="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden"
+     @click="open = false">
+</div>
+
+<!-- Sidebar (Right-aligned) -->
+<div x-show="open"
+     x-transition:enter="transition ease-out duration-300"
+     x-transition:enter-start="translate-x-full"
+     x-transition:enter-end="translate-x-0"
+     x-transition:leave="transition ease-in duration-200"
+     x-transition:leave-start="translate-x-0"
+     x-transition:leave-end="translate-x-full"
+     class="fixed top-0 right-0 z-50 w-64 h-full bg-[#653450] text-white shadow-lg p-6 space-y-4 md:hidden"
+     @click.away="open = false">
+
+    <!-- Close Button and Logo -->
+    <div class="flex justify-between items-center mb-6">
+        <span class="text-2xl font-serif">RecipeFinder<span class="text-white">.</span></span>
+        <button @click="open = false" class="text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Navigation Links -->
+    <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"
+        class="text-white hover:bg-[#933e6b] hover:text-[#653450] px-3 py-2 rounded">
+        <i class="fas fa-home me-2"></i>
         {{ __('Home') }}
     </x-responsive-nav-link>
 
     @auth
-        <x-responsive-nav-link :href="route('favorites.index')" :active="request()->routeIs('favorites.index')" 
-            class="text-white hover:bg-white hover:text-[#653450] !important
-">
-            {{ __('Favorites') }}
+        <x-responsive-nav-link :href="route('favorites.index')" :active="request()->routeIs('favorites.index')"
+            class="text-white hover:bg-[#933e6b] hover:text-[#653450] px-3 py-2 rounded">
+           	<i class="fas fa-heart me-2"></i> {{ __('Favorites') }}
         </x-responsive-nav-link>
 
-        <x-responsive-nav-link :href="route('profile.edit')" 
-            class="text-white hover:bg-white hover:text-[#653450] !important
-">
-            {{ __('Profile') }}
+         <x-responsive-nav-link :href="route('meals.filter')" :active="request()->routeIs('meals.filter')"
+            class="text-white hover:bg-[#933e6b] hover:text-[#653450] px-3 py-2 rounded">
+           		<i class="fas fa-filter me-2"></i> {{ __('Filter') }}
         </x-responsive-nav-link>
 
-         <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <x-responsive-nav-link :href="route('logout')" 
-            onclick="event.preventDefault(); this.closest('form').submit();"
-            class="text-white hover:bg-white hover:text-[#653450]">
-            {{ __('Log Out') }}
+        <x-responsive-nav-link :href="route('profile.edit')"
+            class="text-white hover:bg-[#933e6b] hover:text-[#653450] px-3 py-2 rounded">
+           	<i class="fas fa-user me-2"></i> {{ __('Profile') }}
         </x-responsive-nav-link>
-    </form>
 
-            </form>
-        @else
-            <a href="{{ route('login') }}" class="block text-sm underline">Log in</a>
-            <a href="{{ route('register') }}" class="block text-sm underline">Register</a>
-        @endauth
-    </div>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <x-responsive-nav-link :href="route('logout')"
+                onclick="event.preventDefault(); this.closest('form').submit();"
+                class="text-white hover:bg-[#933e6b]hover:text-[#653450] px-3 py-2 rounded">
+               	<i class="fas fa-sign-out-alt me-2"></i> {{ __('Log Out') }}
+            </x-responsive-nav-link>
+        </form>
+    @else
+        <a href="{{ route('login') }}" class="block text-sm underline">Log in</a>
+        <a href="{{ route('register') }}" class="block text-sm underline">Register</a>
+    @endauth
+</div>
+
 </nav>

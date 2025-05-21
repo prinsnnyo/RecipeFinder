@@ -83,8 +83,8 @@
                 <div class="col-lg-3 col-md-6">
                     <h4>Follow Us</h4>
                     <div class="social-links d-flex">
-                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100083156787311" class="facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/recipe.finder/?hl=en" class="instagram"><i class="bi bi-instagram"></i></a>
                     <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>

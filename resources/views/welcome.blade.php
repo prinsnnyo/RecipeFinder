@@ -21,68 +21,64 @@
     </head>
     <body class="bg-[#f4f4f4] dark:bg-[#fff] text-[#1b1b18] min-h-screen flex flex-col">
     <header class="bg-white shadow-sm dark:bg-[#653450]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
-            <h1 class="text-2xl font-serif text-[#000000] dark:text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between h-auto py-4">
+            <h1 class="text-xl sm:text-2xl font-serif text-[#000000] dark:text-white">
                 RecipeFinder<span class="text-[#fff]">.</span>
             </h1>
 
-            <a>
             @if (Route::has('login'))
-                <div class="flex items-center space-x-4">
+                <div class="flex flex-wrap gap-3 items-center mt-3 sm:mt-0">
                     @auth
                         <a href="{{ url('/login') }}"
-                           class="px-5 py-2 bg-transparent border rounded border-gray-300 text-sm hover:bg-[#AA5486] text-black dark:text-white hover:text-[#fff]">
+                           class="px-4 py-2 bg-transparent border rounded border-gray-300 text-sm hover:bg-[#AA5486] text-black dark:text-white hover:text-[#fff]">
                             Login
                         </a>
                     @else
                         <a href="{{ route('login') }}"
-                           class="px-5 font-serif py-2 border rounded border-transparent text-sm hover:bg-[#AA5486] text-black dark:text-white hover:text-[#fff]">
+                           class="px-4 py-2 font-serif border rounded text-sm border-transparent hover:bg-[#AA5486] text-black dark:text-white hover:text-[#fff]">
                             Log in
                         </a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}"
-                               class="px-5 font-serif py-2 bg-[#AA5486] rounded text-sm text-black dark:text-black bg-[#fff] hover:border-[#653450] hover:text-[#fff] hover:bg-[#AA5486]">
+                               class="px-4 py-2 font-serif bg-[#AA5486] text-white rounded text-sm hover:border-[#653450] hover:bg-[#653450]">
                                 Register
                             </a>
                         @endif
                     @endauth
                 </div>
             @endif
-            </a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="flex flex-col-reverse lg:flex-row items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 mt-4">
-    <div class="text-center lg:text-left max-w-xl">
-    <h2 class="font-serif text-4xl font-semibold mb-4 text-gray-900 dark:text-black">
-    Welcome to <span class="text-[#AA5486]">RecipeFinder</span><br />
-    Your Ultimate Recipe Search Companion!
-</h2>
-<p class="font-serif text-gray-600 dark:text-black-300 mb-6 text-base text-justify">
-    Discover thousands of mouth-watering recipes in seconds. Use our smart search and easy filters to find the perfect recipe based on ingredients, cuisine, cooking time, and more. Whether you're a beginner or a pro, RecipeFinder has something delicious for everyone.
-</p>
+    <section class="flex flex-col-reverse lg:flex-row items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-24 mt-4 gap-10">
+        <div class="text-center lg:text-left max-w-xl w-full">
+            <h2 class="font-serif text-3xl sm:text-4xl font-semibold mb-4 text-gray-900 dark:text-black">
+                Welcome to <span class="text-[#AA5486]">RecipeFinder</span><br />
+                Your Ultimate Recipe Search Companion!
+            </h2>
+            <p class="font-serif text-gray-600 dark:text-black-300 mb-6 text-base text-justify">
+                Discover thousands of mouth-watering recipes in seconds. Use our smart search and easy filters to find the perfect recipe based on ingredients, cuisine, cooking time, and more. Whether you're a beginner or a pro, RecipeFinder has something delicious for everyone.
+            </p>
 
-<div class="font-serif flex items-center justify-center lg:justify-start gap-4">
-    @if (Route::has('register'))
-        <a href="{{ route('register') }}"
-           class="px-6 py-2 text-sm font-semibold rounded-full transition-all duration-300 
-                  text-[#fff] border-[#653450] bg-[#653450] hover:text-[#fff] hover:bg-[#AA5486] 
-                  shadow-md hover:shadow-lg">
-            Sign up
-        </a>
-    @endif
-</div>
+            <div class="font-serif flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                @if (Route::has('register'))
+                     <a href="{{ route('register') }}"
+                        class="px-6 py-2 text-sm font-semibold rounded-full transition-all duration-300 
+                                text-[#fff] border-[#653450] bg-[#653450] hover:text-[#fff] hover:bg-[#AA5486] 
+                                shadow-md hover:shadow-lg">
+                            Sign up
+                        </a>
+                @endif
+            </div>
+        </div>
 
-</div>
-
-<div class="mb-10 lg:mb-0 transform animate-slide-up-down">
-        <img src="{{ asset('hero-img.png') }}" alt="Dish" class="ml-8 w-full max-w-md rounded-2xl transform transition duration-300 ease-in-out" />
-    </div>
+        <div class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-md mb-10 lg:mb-0 animate-slide-up-down">
+            <img src="{{ asset('hero-img.png') }}" alt="Dish" class="mx-auto w-full rounded-2xl transition duration-300 ease-in-out" />
+        </div>
     </section>
 </body>
-
 
 <style>
     .animate-slide-up-down {
