@@ -101,12 +101,14 @@
             {{ __('Profile') }}
         </x-responsive-nav-link>
 
+         <form method="POST" action="{{ route('logout') }}">
+        @csrf
         <x-responsive-nav-link :href="route('logout')" 
             onclick="event.preventDefault(); this.closest('form').submit();"
-            class="text-white hover:bg-white hover:text-[#653450] !important
-">
+            class="text-white hover:bg-white hover:text-[#653450]">
             {{ __('Log Out') }}
         </x-responsive-nav-link>
+    </form>
 
             </form>
         @else

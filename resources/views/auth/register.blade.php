@@ -8,8 +8,8 @@
             <label for="name" class="flex items-center gap-2 text-[#AA5486] font-semibold font-serif">
                 <i class="bi bi-person-fill text-[#AA5486]"></i>{{ __('Name') }}
             </label>
-            <x-text-input id="name" class="block mt-1 w-full bg-white dark:bg-white font-serif" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <x-text-input id="name" class="block mt-1 w-full bg-white dark:bg-white text-black font-serif" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Name" />
+            <x-input-error :messages="$errors->get('name')" class="mt-2 text-black" />
         </div>
 
         <!-- Email Address -->
